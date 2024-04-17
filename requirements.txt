@@ -1,0 +1,10 @@
+python-dotenv
+numpy
+pandas
+langchain
+langchain-cohere
+langchain-community
+cohere
+unstructured
+chromadb
+cohere
