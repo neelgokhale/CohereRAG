@@ -48,5 +48,5 @@ class VectorstoreManager(object):
         else:
             db = Chroma(persist_directory=self.chroma_dir_path, 
                         embedding_function=embeddings)
-        
+
         return db

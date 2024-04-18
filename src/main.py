@@ -1,6 +1,7 @@
 # ../src/main.py
 
 import os
+import asyncio
 
 from langchain_cohere import (
     ChatCohere, CohereRagRetriever, CohereEmbeddings, CohereRerank
@@ -32,7 +33,7 @@ def main():
     
     query = "what is single headed attention"
     
-    chatbot.query(query)
+    asyncio.run(chatbot.query(query))
 
 if __name__ == "__main__":
     main()
