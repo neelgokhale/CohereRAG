@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 # test scripts
-*test*.py
+src/*test*.py
 
 # mlflow artifacts
 mlruns

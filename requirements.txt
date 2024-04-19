@@ -8,3 +8,6 @@ cohere
 unstructured
 chromadb
 cohere
+wikipedia
+arxiv
+langchainhub

@@ -9,7 +9,7 @@ from langchain_cohere import (
 from dotenv import load_dotenv
 load_dotenv()
 
-from chatbot import Chatbot
+from agent import CohereAgent
 from vectorstore import VectorstoreManager
 
 def main():
@@ -23,17 +23,19 @@ def main():
     vs = VectorstoreManager()
     db = vs.setup(embeddings=embeddings, force_reload=False)
     
-    chatbot = Chatbot(
+    agent = CohereAgent(
         llm,
         rag,
         embeddings,
         rerank
     )
-    chatbot.setup(db)
+    agent.setup(db)
     
-    query = "what is single headed attention"
+    query = "Describe multi-headed attention using Cohere's LLM university\
+    and find me some research papers from from arxiv about \
+    research on multi-headed attention"
     
-    asyncio.run(chatbot.query(query))
+    asyncio.run(agent.query(query))
 
 if __name__ == "__main__":
     main()

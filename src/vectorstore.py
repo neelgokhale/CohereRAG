@@ -12,7 +12,6 @@ from langchain.text_splitter import CharacterTextSplitter
 
 class VectorstoreManager(object):
 
-    
     def __init__(self):
         self.links = [
             "https://docs.cohere.com/docs/text-embeddings",

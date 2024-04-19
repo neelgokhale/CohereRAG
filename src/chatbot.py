@@ -1,7 +1,6 @@
 # ../src/chatbot.py
 
 import os
-from pprint import pprint
 
 from langchain_cohere import (
     ChatCohere, CohereRagRetriever, CohereEmbeddings, CohereRerank

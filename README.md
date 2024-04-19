@@ -9,7 +9,9 @@
 - Implements a retrieval-augmented generation (RAG) model for generating responses based on retrieved documents.
 - Supports embedding-based reranking of responses to improve relevance.
 - Integrates with a vector store manager (ChromaDB) for efficient retrieval and management of document embeddings.
-
+- [NEW] cohere agent class `CohereAgent` that leverages 2 tools:
+    - `retriever_tool` - Cohere RAG retriever combined with the ReRanker
+    - `arxiv` - searches arxiv database for research on LLM-related topics
 
 ### Prerequisites
 
