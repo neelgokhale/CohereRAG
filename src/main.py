@@ -4,38 +4,27 @@ import os
 import asyncio
 
 from langchain_cohere import (
-    ChatCohere, CohereRagRetriever, CohereEmbeddings, CohereRerank
+    ChatCohere
 )
 from dotenv import load_dotenv
 load_dotenv()
 
-from agent import CohereAgent
-from vectorstore import VectorstoreManager
+from self_consistency import SelfConsistentClassifier
 
 def main():
     cohere_api_key = os.getenv("COHERE_API_KEY")
     
     llm = ChatCohere(cohere_api_key=cohere_api_key)
-    rag = CohereRagRetriever(llm=llm)
-    embeddings = CohereEmbeddings(cohere_api_key=cohere_api_key)
-    rerank = CohereRerank(cohere_api_key=cohere_api_key)
-    
-    vs = VectorstoreManager()
-    db = vs.setup(embeddings=embeddings, force_reload=False)
-    
-    agent = CohereAgent(
-        llm,
-        rag,
-        embeddings,
-        rerank
+
+    classifier = SelfConsistentClassifier(
+        llm
     )
-    agent.setup(db)
+    classifier.setup()
     
-    query = "Describe multi-headed attention using Cohere's LLM university\
-    and find me some research papers from from arxiv about \
-    research on multi-headed attention"
+    query = "The old house stood silent and imposing against the backdrop of the setting sun. Its weathered facade hinted at a rich history, whispering tales of bygone days. As I approached, a sense of nostalgia washed over me, mingling with a tinge of apprehension. Yet, amidst the shadows of uncertainty, there lingered a glimmer of hope, a promise of new beginnings"
     
-    asyncio.run(agent.query(query))
+    output = asyncio.run(classifier.classify(query))
+    print(output)
 
 if __name__ == "__main__":
     main()

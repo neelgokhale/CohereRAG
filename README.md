@@ -12,6 +12,10 @@
 - [NEW] cohere agent class `CohereAgent` that leverages 2 tools:
     - `retriever_tool` - Cohere RAG retriever combined with the ReRanker
     - `arxiv` - searches arxiv database for research on LLM-related topics
+- [NEW] a classifier class `SelfConsistentClassifier` that applies self-consistency to determine the overall sentiment of the query that is passed from `POSITIVE`, `NEGATIVE` or `NEUTRAL`.
+    - samples a defined number of examples from `data\classify_data.json` for chain-of-thought generation
+    - contains a `PydanticOutputParser` implementation to add structure to the output of the classifier
+    - contains a function to manually apply more validations on an incorrectly intrepreted response structure
 
 ### Prerequisites
 
